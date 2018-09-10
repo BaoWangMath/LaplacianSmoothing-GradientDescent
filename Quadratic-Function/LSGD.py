@@ -2,7 +2,7 @@
 """
 Test LSGD with arbitrary order smoothing on the following quadratic function:
     x_1^2/1^2 + x_2^2/10^2 + ... + x_{2n-1}^2/1^2 + x_{2n}^2/10^2
-Usage: python Quadratic_ArbitraryOrder.py [-n 100] [-sigma 10] [-order 2]
+Usage: python LSGD.py [-n 100] [-sigma 10] [-order 2]
 """
 import numpy as np
 import matplotlib.pyplot as plt
