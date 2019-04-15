@@ -17,7 +17,7 @@ import sys
 #------------------------------------------------------------------------------
 import torch
 import torch.nn as nn
-import torch.optim as optim
+import torch.optim as optimhttps://github.com/BaoWangMath/LaplacianSmoothing-GradientDescent/blob/master/Small-BatchSize/main.py
 import torch.nn.functional as F
 import torch.backends.cudnn as cudnn
 import torchvision
@@ -39,7 +39,7 @@ from utils import *
 
 #------------------------------------------------------------------------------
 # LS-SGD Optimizer 
-#------------------------------------------------------------------------------
+#------------------------------------------------------------------https://github.com/BaoWangMath/LaplacianSmoothing-GradientDescent/blob/master/Small-BatchSize/main.py------------
 from SGD import *
 from LS_SGD import *
 
@@ -89,7 +89,8 @@ if __name__ == '__main__':
     sigma = 1.5
     lr = 0.01
     weight_decay = 5e-4
-    optimizer = Grad_SGD(net.parameters(), lr=lr, momentum=0.9, weight_decay=weight_decay, nesterov=True)
+    #optimizer = Grad_SGD(net.parameters(), lr=lr, momentum=0.9, weight_decay=weight_decay, nesterov=True)
+    optimizer = LS_SGD(net.parameters(), lr=lr, sigma=sigma, momentum=0.9, weight_decay=weight_decay, nesterov=True)
     
     nepoch =200
     for epoch in xrange(nepoch):
@@ -100,8 +101,8 @@ if __name__ == '__main__':
         if epoch >=40 and (epoch//40 == epoch/40.0):
             lr = lr/5
             print("Descrease the Learning Rate, lr = ", lr)
-            #optimizer = Grad_SJO_SGD(net.parameters(), lr=lr, sigma = sigma, momentum=0.9, nesterov=True)
-            optimizer = Grad_SJO_SGD(net.parameters(), lr=lr, sigma = sigma, momentum=0.9, weight_decay=weight_decay, nesterov=True)
+            #optimizer = LS_SGD(net.parameters(), lr=lr, sigma = sigma, momentum=0.9, nesterov=True)
+            optimizer = LS_SGD(net.parameters(), lr=lr, sigma = sigma, momentum=0.9, weight_decay=weight_decay, nesterov=True)
             #optimizer = Grad_SGD(net.parameters(), lr=lr, momentum=0.9, weight_decay=weight_decay, nesterov=True)
         
         correct = 0; total = 0; train_loss = 0
