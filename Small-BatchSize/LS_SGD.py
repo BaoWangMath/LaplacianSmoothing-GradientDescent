@@ -9,7 +9,7 @@ from Grad_optimizer import Optimizer, required
 from torch.autograd import Variable
 import time
 
-class Grad_SJO_SGD(Optimizer):
+class LS_SGD(Optimizer):
     """
     Implements stochastic gradient descent with SJO smoothing (optionally with momentum).
     Nesterov momentum is based on the formula from:
@@ -36,7 +36,7 @@ class Grad_SJO_SGD(Optimizer):
         defaults = dict(lr=lr, sigma=sigma, momentum=momentum, dampening=dampening, weight_decay=weight_decay, nesterov=nesterov)
         if nesterov and (momentum <= 0 or dampening != 0):
             raise ValueError("Nesterov momentum requires a momentum and zero dampening")
-        super(Grad_SJO_SGD, self).__init__(params, defaults)
+        super(LS_SGD, self).__init__(params, defaults)
         
         sizes = []
         for param in self.param_groups[0]['params']:
