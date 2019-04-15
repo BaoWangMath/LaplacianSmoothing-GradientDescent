@@ -54,7 +54,7 @@ class Grad_SGD(Optimizer):
             for p in group['params']:
                 if p.grad is None:
                     continue
-                d_p = p.grad.data   # TODO We need to smooth this by SJO operator
+                d_p = p.grad.data
                 
                 if weight_decay != 0:
                     d_p.add_(weight_decay, p.data)
