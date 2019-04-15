@@ -11,7 +11,7 @@ import time
 
 class LS_SGD(Optimizer):
     """
-    Implements stochastic gradient descent with SJO smoothing (optionally with momentum).
+    Implements stochastic gradient descent with Laplace smoothing (optionally with momentum).
     Nesterov momentum is based on the formula from:
         'On the importance of initialization and momentum in deep learning.'
     Args:
