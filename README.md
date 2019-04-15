@@ -11,3 +11,6 @@ Code for the paper: https://arxiv.org/abs/1806.06317
 
 ## ResNet
 **This directory contains the LS-GD code for training ResNet**
+
+## Tensorflow-LSSGD
+**This directory contains the tensorflow implementation of LS-SGD**
