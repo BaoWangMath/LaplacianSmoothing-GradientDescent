@@ -17,7 +17,7 @@ import sys
 #------------------------------------------------------------------------------
 import torch
 import torch.nn as nn
-import torch.optim as optimhttps://github.com/BaoWangMath/LaplacianSmoothing-GradientDescent/blob/master/Small-BatchSize/main.py
+import torch.optim as optim
 import torch.nn.functional as F
 import torch.backends.cudnn as cudnn
 import torchvision
