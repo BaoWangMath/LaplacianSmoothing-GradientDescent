@@ -17,7 +17,7 @@ class LS_SGD(Optimizer):
     Args:
         params (iterable): iterable of parameters to optimize or dicts defining parameter groups.
         lr (float): learning rate.
-        sigma (float, optional): SJO smoothing parameter.
+        sigma (float, optional): Laplace smoothing parameter.
         momentum (float, optional): momentum factor (default: 0).
         weight_decay (float, optional): weight decay (L2 penalty) (default: 0).
         dampening (float, optional): dampening for momentum (default: 0).
@@ -66,7 +66,7 @@ class LS_SGD(Optimizer):
     
     
     def __setstate__(self, state):
-        super(Grad_SJO_SGD, self).__setstate__(state)
+        super(LS_SGD, self).__setstate__(state)
         for group in self.param_groups:
             group.setdefault('nesterov', False)
     
