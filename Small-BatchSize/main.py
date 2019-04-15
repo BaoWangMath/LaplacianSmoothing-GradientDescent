@@ -39,7 +39,7 @@ from utils import *
 
 #------------------------------------------------------------------------------
 # LS-SGD Optimizer 
-#------------------------------------------------------------------https://github.com/BaoWangMath/LaplacianSmoothing-GradientDescent/blob/master/Small-BatchSize/main.py------------
+#-------------------------------------------------------------------------------
 from SGD import *
 from LS_SGD import *
 
