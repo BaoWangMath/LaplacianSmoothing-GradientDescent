@@ -4,7 +4,7 @@ LS-SGD
 import numpy as np
 import torch
 import random
-#import pytorch_fft.fft as fft
+import pytorch_fft.fft as fft
 from Grad_optimizer import Optimizer, required
 from torch.autograd import Variable
 import time
@@ -51,9 +51,9 @@ class LS_SGD(Optimizer):
             c[0, -1] = 1.
             c = torch.Tensor(c).cuda()
             zero_N = torch.zeros(1, size).cuda()
-            #c_fft, _ = fft.fft(c, zero_N)
+            c_fft, _ = fft.fft(c, zero_N)
             
-            c_fft = torch.rfft(c, 1, onesided=False)
+            #c_fft = torch.rfft(c, 1, onesided=False)
             
             coeff = 1. / (1.-sigma*c_fft)
             coeffs.append(coeff)
@@ -96,17 +96,17 @@ class LS_SGD(Optimizer):
                 tmp = param.grad.view(-1, self.sizes[idx])
                 tmp = tmp.data
                 
-                '''
+                
                 re, im = fft.fft(tmp, self.zero_Ns[idx])
                 re = re*self.coeffs[idx]
                 im = im*self.coeffs[idx]
                 tmp = fft.ifft(re, im)[0]
-                '''
                 
+                '''
                 ft_tmp = torch.rfft(tmp,1,onesided = False)
                 tmp = torch.mul(ft_tmp,self.coeffs[idx])
                 tmp = torch.irfft(tmp,1,onesided = False)
-                
+                '''
                 tmp = tmp.view(param.grad.size())
                 param.grad.data = tmp
                 idx += 1
